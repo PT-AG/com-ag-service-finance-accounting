@@ -63,7 +63,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.PDFTemplates
 
             cellHeaderBody.Phrase = new Phrase("Kepada Yth.......", normal_font);
             headerTable1.AddCell(cellHeaderBody);
-            cellHeaderBody.Phrase = new Phrase("Kasir PT. Ambassador", normal_font);
+            cellHeaderBody.Phrase = new Phrase("Kasir PT. Ambassador Garmindo", normal_font);
             headerTable1.AddCell(cellHeaderBody);
             cellHeaderBody.Phrase = new Phrase("Di tempat", normal_font);
             headerTable1.AddCell(cellHeaderBody);
