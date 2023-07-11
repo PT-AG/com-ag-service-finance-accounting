@@ -14,7 +14,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.AutoMapperProfiles.Garme
             CreateMap<GarmentFinanceAdjustmentModel, GarmentFinanceAdjustmentViewModel>()
                 .ForPath(d => d.GarmentCurrency.Id, opt => opt.MapFrom(s => s.GarmentCurrencyId))
                 .ForPath(d => d.GarmentCurrency.Code, opt => opt.MapFrom(s => s.GarmentCurrencyCode))
-                .ForPath(d => d.GarmentCurrency.Rate, opt => opt.MapFrom(s => s.GarmentCurrencyRate))
+                //.ForPath(d => d.GarmentCurrency.Rate, opt => opt.MapFrom(s => s.GarmentCurrencyRate))
 
                 .ReverseMap();
 
