@@ -19,6 +19,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinanc
 
         public CurrencyViewModel GarmentCurrency { get; set; }
 
+        public double GarmentCurrencyRate { get; set; }
+
         public string Remark { get; set; }
         public bool IsUsed { get; set; }
 

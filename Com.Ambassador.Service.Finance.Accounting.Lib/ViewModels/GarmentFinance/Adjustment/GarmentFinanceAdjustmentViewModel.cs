@@ -14,6 +14,9 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinanc
         public DateTimeOffset? Date { get; set; }
 
         public CurrencyViewModel GarmentCurrency { get; set; }
+
+        public double GarmentCurrencyRate { get; set; }
+
         public double Amount { get; set; }
         public string Remark { get; set; }
         public bool IsUsed { get; set; }
