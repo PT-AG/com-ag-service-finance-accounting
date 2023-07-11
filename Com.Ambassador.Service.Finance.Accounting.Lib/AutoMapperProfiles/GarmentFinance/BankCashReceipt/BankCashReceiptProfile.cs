@@ -21,7 +21,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.AutoMapperProfiles.Garme
 
                 .ForPath(d => d.Currency.Id, opt => opt.MapFrom(s => s.CurrencyId))
                 .ForPath(d => d.Currency.Code, opt => opt.MapFrom(s => s.CurrencyCode))
-                .ForPath(d => d.Currency.Rate, opt => opt.MapFrom(s => s.CurrencyRate))
+                //.ForPath(d => d.Currency.Rate, opt => opt.MapFrom(s => s.CurrencyRate))
 
                 .ForPath(d => d.DebitCoa.Id, opt => opt.MapFrom(s => s.DebitCoaId))
                 .ForPath(d => d.DebitCoa.Code, opt => opt.MapFrom(s => s.DebitCoaCode))
