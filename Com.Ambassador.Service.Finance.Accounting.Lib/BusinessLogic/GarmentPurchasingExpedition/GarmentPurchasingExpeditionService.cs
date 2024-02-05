@@ -100,17 +100,18 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.GarmentPur
             if (!string.IsNullOrEmpty(currencyCode))
                 query = query.Where(entity => entity.CurrencyCode == currencyCode);
 
-            if (position == GarmentPurchasingExpeditionPosition.Purchasing)
-            {
-                var notPurchasingInternalNoteIds = _dbContext.GarmentPurchasingExpeditions
-                   .GroupBy(entity => new { entity.InternalNoteId, entity.Position, entity.CreatedUtc })
-                   .Select(groupped => new { groupped.Key.InternalNoteId, groupped.Key.Position, groupped.OrderByDescending(entity => entity.CreatedUtc).FirstOrDefault().Id })
-                   .Where(entity => entity.Position > GarmentPurchasingExpeditionPosition.Purchasing)
-                   .Select(entity => entity.InternalNoteId)
-                   .ToList();
+            //Comment to Optimized Query 05-02-2024
+            //if (position == GarmentPurchasingExpeditionPosition.Purchasing)
+            //{
+            //    var notPurchasingInternalNoteIds = _dbContext.GarmentPurchasingExpeditions
+            //       .GroupBy(entity => new { entity.InternalNoteId, entity.Position, entity.CreatedUtc })
+            //       .Select(groupped => new { groupped.Key.InternalNoteId, groupped.Key.Position, groupped.OrderByDescending(entity => entity.CreatedUtc).FirstOrDefault().Id })
+            //       .Where(entity => entity.Position > GarmentPurchasingExpeditionPosition.Purchasing)
+            //       .Select(entity => entity.InternalNoteId)
+            //       .ToList();
 
-                query = query.Where(entity => !notPurchasingInternalNoteIds.Contains(entity.InternalNoteId));
-            }
+            //    query = query.Where(entity => !notPurchasingInternalNoteIds.Contains(entity.InternalNoteId));
+            //}
 
             var count = query.ToList().Count();
 
