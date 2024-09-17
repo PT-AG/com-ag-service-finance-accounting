@@ -36,6 +36,7 @@ using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.Memori
 using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.BankCashReceiptDetailLocal;
 using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.MemorialDetailLocal;
 using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.LocalDebiturBalance;
+using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.Adjustment;
 
 namespace Com.Ambassador.Service.Finance.Accounting.Lib
 {
@@ -159,6 +160,10 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib
         public DbSet<GarmentFinanceBankCashReceiptDetailLocalOtherItemModel> GarmentFinanceBankCashReceiptDetailLocalOtherItems { get; set; }
 
         public DbSet<GarmentLocalDebiturBalanceModel> GarmentLocalDebiturBalances { get; set; }
+
+        public DbSet<GarmentFinanceAdjustmentModel> GarmentFinanceAdjustments { get; set; }
+        public DbSet<GarmentFinanceAdjustmentItemModel> GarmentFinanceAdjustmentItems { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

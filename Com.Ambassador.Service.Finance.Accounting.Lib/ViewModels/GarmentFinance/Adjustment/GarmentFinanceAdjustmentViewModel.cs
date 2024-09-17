@@ -6,32 +6,25 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinance.Memorial
+namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinance.Adjustment
 {
-    public class GarmentFinanceMemorialViewModel : BaseViewModel, IValidatableObject
+    public class GarmentFinanceAdjustmentViewModel : BaseViewModel, IValidatableObject
     {
-        public string MemorialNo { get; set; }
+        public string AdjustmentNo { get; set; }
         public DateTimeOffset? Date { get; set; }
-
-        public int AccountingBookId { get; set; }
-        public string AccountingBookCode { get; set; }
-        public string AccountingBookType { get; set; }
 
         public CurrencyViewModel GarmentCurrency { get; set; }
 
         public double GarmentCurrencyRate { get; set; }
 
+        public double Amount { get; set; }
         public string Remark { get; set; }
         public bool IsUsed { get; set; }
 
-        public List<GarmentFinanceMemorialItemViewModel> Items { get; set; }
+        public List<GarmentFinanceAdjustmentItemViewModel> Items { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (this.AccountingBookId == 0)
-            {
-                yield return new ValidationResult("Kode Buku harus dipilih", new List<string> { "AccountingBook" });
-            }
+        {           
             if (this.GarmentCurrency == null || this.GarmentCurrency.Id == 0)
             {
                 yield return new ValidationResult("Mata Uang harus dipilih", new List<string> { "GarmentCurrency" });
@@ -58,7 +51,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinanc
                 int itemErrorCount = 0;
                 string ItemError = "[";
 
-                foreach (GarmentFinanceMemorialItemViewModel Item in Items)
+                foreach (GarmentFinanceAdjustmentItemViewModel Item in Items)
                 {
                     ItemError += "{ ";
 

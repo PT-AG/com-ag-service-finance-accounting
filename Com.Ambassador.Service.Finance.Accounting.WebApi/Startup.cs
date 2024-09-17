@@ -104,6 +104,9 @@ using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Interfaces.Rep
 using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Services.Reports.LocalSalesDebtorReport;
 using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.GarmentFinance.Reports.LocalDebtorCard;
 using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.GarmentFinance.Reports.LocalBankCashReceiptMonthlyRecap;
+using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Reports.GarmentExportBankReceiptJournal;
+using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Reports.GarmentLocalBankReceiptJournal;
+using Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.GarmentFinance.Adjustment;
 
 namespace Com.Ambassador.Service.Finance.Accounting.WebApi
 {
@@ -209,7 +212,10 @@ namespace Com.Ambassador.Service.Finance.Accounting.WebApi
                 .AddTransient<ILocalSalesDebtorReportService, LocalSalesDebtorReportService>()
                 .AddTransient<IGarmentFinanceLocalDebtorCardReportService, GarmentFinanceLocalDebtorCardReportService>()
                 .AddTransient<IGarmentFinanceExportSalesOutstandingReportService, GarmentFinanceExportSalesOutstandingReportService>()
-                .AddTransient<IGarmentFinanceLocalBankCashReceiptMonthlyRecapService, GarmentFinanceLocalBankCashReceiptMonthlyRecapService>();
+                .AddTransient<IGarmentFinanceLocalBankCashReceiptMonthlyRecapService, GarmentFinanceLocalBankCashReceiptMonthlyRecapService>()
+                .AddTransient<IGarmentExportBankReceiptJournalService, GarmentExportBankReceiptJournalService>()
+                .AddTransient<IGarmentFinanceAdjustmentService, GarmentFinanceAdjustmentService>()     
+               .AddTransient<IGarmentLocalBankReceiptJournalService, GarmentLocalBankReceiptJournalService>();
         }
 
 
@@ -320,11 +326,11 @@ namespace Com.Ambassador.Service.Finance.Accounting.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<FinanceDbContext>();
-                context.Database.Migrate();
-            }
+            //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    var context = serviceScope.ServiceProvider.GetService<FinanceDbContext>();
+            //    context.Database.Migrate();
+            //}
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

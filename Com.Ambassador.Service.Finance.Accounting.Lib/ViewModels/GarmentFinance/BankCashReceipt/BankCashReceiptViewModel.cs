@@ -18,6 +18,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinanc
 
         public CurrencyViewModel Currency { get; set; }
 
+        public double GarmentCurrencyRate { get; set; }
+
         public string NumberingCode { get; set; }
         public string IncomeType { get; set; }
         public string Remarks { get; set; }

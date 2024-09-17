@@ -1,24 +1,24 @@
 ﻿using AutoMapper;
-using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.Memorial;
-using Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinance.Memorial;
+using Com.Ambassador.Service.Finance.Accounting.Lib.Models.GarmentFinance.Adjustment;
+using Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.GarmentFinance.Adjustment;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Com.Ambassador.Service.Finance.Accounting.Lib.AutoMapperProfiles.GarmentFinance.Memorial
+namespace Com.Ambassador.Service.Finance.Accounting.Lib.AutoMapperProfiles.GarmentFinance.Adjustment
 {
-    public class GarmentFinanceMemorialProfile : Profile
+    public class GarmentFinanceAdjustmentProfile : Profile
     {
-        public GarmentFinanceMemorialProfile()
+        public GarmentFinanceAdjustmentProfile()
         {
-            CreateMap<GarmentFinanceMemorialModel, GarmentFinanceMemorialViewModel>()
+            CreateMap<GarmentFinanceAdjustmentModel, GarmentFinanceAdjustmentViewModel>()
                 .ForPath(d => d.GarmentCurrency.Id, opt => opt.MapFrom(s => s.GarmentCurrencyId))
                 .ForPath(d => d.GarmentCurrency.Code, opt => opt.MapFrom(s => s.GarmentCurrencyCode))
                 //.ForPath(d => d.GarmentCurrency.Rate, opt => opt.MapFrom(s => s.GarmentCurrencyRate))
 
                 .ReverseMap();
 
-            CreateMap<GarmentFinanceMemorialItemModel, GarmentFinanceMemorialItemViewModel>()
+            CreateMap<GarmentFinanceAdjustmentItemModel, GarmentFinanceAdjustmentItemViewModel>()
                 .ForPath(d => d.COA.Id, opt => opt.MapFrom(s => s.COAId))
                 .ForPath(d => d.COA.Code, opt => opt.MapFrom(s => s.COACode))
                 .ForPath(d => d.COA.Name, opt => opt.MapFrom(s => s.COAName))
