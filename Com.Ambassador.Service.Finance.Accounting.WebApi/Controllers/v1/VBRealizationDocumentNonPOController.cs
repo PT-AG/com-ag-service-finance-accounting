@@ -230,7 +230,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.WebApi.Controllers.v1
                         MemoryStream stream = PdfTemplate.GeneratePdfTemplate(data, timeoffsset);
                         return new FileStreamResult(stream, "application/pdf")
                         {
-                            FileDownloadName = $"Realisasi VB Inklaring Tanpa PO - {data.DocumentNo}.pdf"
+                            //FileDownloadName = $"Realisasi VB Inklaring Tanpa PO - {data.DocumentNo}.pdf"
+                            FileDownloadName = $"Realisasi VB Cash Inklaring - {data.DocumentNo}.pdf"
                         };
 
                     } else
@@ -239,7 +240,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.WebApi.Controllers.v1
                         MemoryStream stream = PdfTemplate.GeneratePdfTemplate(data, timeoffsset);
                         return new FileStreamResult(stream, "application/pdf")
                         {
-                            FileDownloadName = $"Realisasi VB Tanpa PO - {data.DocumentNo}.pdf"
+                            //FileDownloadName = $"Realisasi VB Tanpa PO - {data.DocumentNo}.pdf"
+                            FileDownloadName = $"Realisasi VB Cash - {data.DocumentNo}.pdf"
                         };
                     }
                 }

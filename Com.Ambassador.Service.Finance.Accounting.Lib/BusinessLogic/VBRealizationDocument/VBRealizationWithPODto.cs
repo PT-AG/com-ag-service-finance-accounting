@@ -17,5 +17,6 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
         public List<VBRealizationWithPOItemDto> Items { get;  set; }
         public VBRealizationPosition Position { get; set; }
         public string Remark { get; set; }
+        public string ReasonForDelay { get; set; }
     }
 }

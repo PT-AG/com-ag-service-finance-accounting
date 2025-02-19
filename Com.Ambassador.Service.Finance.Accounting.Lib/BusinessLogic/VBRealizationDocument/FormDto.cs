@@ -18,11 +18,21 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
         public int Id { get; set; }
         public bool IsInklaring { get; set; }
         public string Remark { get; set; }
+        public string ReasonForDelay { get; set; }
+        public bool IsDelay { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Date == null)
                 yield return new ValidationResult("Tanggal harus diisi", new List<string> { "Date" });
+
+            if (IsDelay && Type == "Dengan Nomor VB")
+            {
+                if (string.IsNullOrWhiteSpace(ReasonForDelay))
+                {
+                    yield return new ValidationResult("Alasan Keterlambatan harus diisi", new List<string> { "ReasonForDelay" });
+                }
+            }
 
             if (string.IsNullOrWhiteSpace(Type))
                 yield return new ValidationResult("Jenis VB harus diisi", new List<string> { "Type" });

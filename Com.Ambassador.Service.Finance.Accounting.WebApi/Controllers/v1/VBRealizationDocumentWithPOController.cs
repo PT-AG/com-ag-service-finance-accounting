@@ -226,7 +226,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.WebApi.Controllers.v1
                     MemoryStream stream = PdfTemplate.GeneratePdfTemplate(data, timeoffsset);
                     return new FileStreamResult(stream, "application/pdf")
                     {
-                        FileDownloadName = $"Realisasi VB Dengan PO - {data.Header.DocumentNo}.pdf"
+                        //FileDownloadName = $"Realisasi VB Dengan PO - {data.Header.DocumentNo}.pdf"
+                        FileDownloadName = $"Realisasi Uang Muka Pembelian - {data.Header.DocumentNo}.pdf"
                     };
                 }
             }

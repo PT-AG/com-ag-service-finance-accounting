@@ -309,6 +309,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Services.V
                 },
                 VBNonPOType = model.VBNonPoType,
                 Remark = model.Remark,
+                ReasonForDelay = model.ReasonForDelay,
                 Items = items.Select(s => new VBRealizationDocumentNonPOExpenditureItemViewModel()
                 {
                     Active = s.Active,
@@ -393,7 +394,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.Services.V
             model.Amount = model.Items.Sum(s => s.Total);
             data.SetRemark(model.Remark);
             data.SetAmount(model.Amount, _identityService.Username, UserAgent);
-            if(data.VBRequestDocumentId != model.VBDocument.Id)
+            data.SetReasonForDelay(model.ReasonForDelay);
+            if (data.VBRequestDocumentId != model.VBDocument.Id)
             {
                 var newVBRequest = _dbContext.VBRequestDocuments.FirstOrDefault(s => s.Id == model.VBDocument.Id);
                 var oldVBRequest = _dbContext.VBRequestDocuments.FirstOrDefault(s => s.Id == data.VBRequestDocumentId);

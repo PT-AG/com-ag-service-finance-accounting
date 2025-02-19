@@ -128,7 +128,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
             });
 
             if (form.Type == "Tanpa Nomor VB")
-                model = new VBRealizationDocumentModel(form.Currency, form.Date, form.SuppliantUnit, documentNo, (decimal)amount, form.Remark);
+                model = new VBRealizationDocumentModel(form.Currency, form.Date, form.SuppliantUnit, documentNo, (decimal)amount, form.Remark, form.ReasonForDelay);
             else
             {
                 var vbRequest = _dbContext.VBRequestDocuments.FirstOrDefault(entity => entity.Id == form.VBRequestDocument.Id.GetValueOrDefault());
@@ -139,7 +139,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
                     _dbContext.VBRequestDocuments.Update(vbRequest);
                 }
 
-                model = new VBRealizationDocumentModel(form.Date, vbRequest, documentNo, (decimal)amount, form.Remark);
+                model = new VBRealizationDocumentModel(form.Date, vbRequest, documentNo, (decimal)amount, form.Remark, form.ReasonForDelay);
             }
 
             EntityExtension.FlagForCreate(model, _identityService.Username, UserAgent);
@@ -304,6 +304,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
                     Date = model.Date,
                     Type = model.DocumentType == RealizationDocumentType.WithVB ? "Dengan Nomor VB" : "Tanpa Nomor VB",
                     Remark = model.Remark,
+                    ReasonForDelay = model.ReasonForDelay,
                     SuppliantUnit = new UnitDto()
                     {
                         Code = model.SuppliantUnitCode,
@@ -402,7 +403,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRealizat
             var model = _dbContext.VBRealizationDocuments.FirstOrDefault(entity => entity.Id == id);
             model.UpdatePosition(VBRealizationPosition.Purchasing, _identityService.Username, UserAgent);
             model.SetRemark(form.Remark);
-
+            model.SetReasonForDelay(form.ReasonForDelay);
             if (form.VBRequestDocument != null && form.VBRequestDocument.Id.GetValueOrDefault() > 0)
             {
                 var vbRequest = _dbContext.VBRequestDocuments.FirstOrDefault(entity => entity.Id == form.VBRequestDocument.Id.GetValueOrDefault());

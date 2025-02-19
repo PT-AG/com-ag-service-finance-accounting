@@ -113,7 +113,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.PDFTemplates
             cellHeaderBody2.HorizontalAlignment = Element.ALIGN_CENTER;
             cellHeaderBody3.HorizontalAlignment = Element.ALIGN_RIGHT;
 
-            cellHeaderBody2.Phrase = new Phrase("PERMOHONAN VB TANPA PO", bold_font);
+            //cellHeaderBody2.Phrase = new Phrase("PERMOHONAN VB TANPA PO", bold_font);
+            cellHeaderBody2.Phrase = new Phrase("VB CASH", bold_font);
             Title.AddCell(cellHeaderBody2);
 
             cellHeaderBody2.Phrase = new Phrase(" ", bold_font);

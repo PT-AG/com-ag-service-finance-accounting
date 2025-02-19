@@ -42,6 +42,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.VBRealization
         public IEnumerable<VBRealizationDocumentNonPOExpenditureItemViewModel> Items { get; set; }
         public IEnumerable<VBRealizationDocumentNonPOUnitCostViewModel> UnitCosts { get; set; }
         public string Remark { get; set; }
+        public string ReasonForDelay { get; set; }
+        public bool IsDelay { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -51,6 +53,13 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.ViewModels.VBRealization
             if (string.IsNullOrWhiteSpace(VBNonPOType))
             {
                 yield return new ValidationResult("Tipe VB harus dipilih!", new List<string> { "VBNonPOType" });
+            }
+            if (IsDelay && VBNonPOType == "Dengan Nomor VB")
+            {
+                if (string.IsNullOrWhiteSpace(ReasonForDelay))
+                {
+                    yield return new ValidationResult("Alasan Keterlambatan harus diisi", new List<string> { "ReasonForDelay" });
+                }
             }
             else
             {

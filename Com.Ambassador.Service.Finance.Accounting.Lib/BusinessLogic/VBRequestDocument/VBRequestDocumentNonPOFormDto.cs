@@ -32,6 +32,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.BusinessLogic.VBRequestD
 
             if (RealizationEstimationDate == null)
                 yield return new ValidationResult("Estimasi Tanggal Realisasi harus diisi", new List<string> { "RealizationEstimationDate" });
+            if (RealizationEstimationDate.Value.AddHours(7).Date < DateTime.Now.Date)
+                yield return new ValidationResult("Estimasi Tanggal Realisasi harus sama atau lebih besar dengan hari ini", new List<string> { "RealizationEstimationDate" });
 
             if (SuppliantUnit == null || SuppliantUnit.Id.GetValueOrDefault() <= 0)
                 yield return new ValidationResult("Unit Pemohon harus diisi", new List<string> { "SuppliantUnit" });

@@ -81,7 +81,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.PDFTemplates
             cellHeaderBody3.HorizontalAlignment = Element.ALIGN_RIGHT;
 
             cellHeaderBody2.Colspan = 3;
-            cellHeaderBody2.Phrase = new Phrase("PERMOHONAN VB DENGAN PO", bold_font);
+            //cellHeaderBody2.Phrase = new Phrase("PERMOHONAN VB DENGAN PO", bold_font);
+            cellHeaderBody2.Phrase = new Phrase("UANG MUKA PEMBELIAN", bold_font);
             headerTable3.AddCell(cellHeaderBody2);
 
             //cellHeaderBody.Phrase = new Phrase(" ", normal_font);

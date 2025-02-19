@@ -104,7 +104,8 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.PDFTemplates
 
             // Document title
             cellHeaderBody2.Colspan = 7;
-            cellHeaderBody2.Phrase = new Phrase("REALISASI VB DENGAN PO", bold_font);
+            //cellHeaderBody2.Phrase = new Phrase("REALISASI VB DENGAN PO", bold_font);
+            cellHeaderBody2.Phrase = new Phrase("REALISASI UANG MUKA PEMBELIAN", bold_font);
             headerTable3.AddCell(cellHeaderBody2);
 
             // Document number
@@ -661,6 +662,32 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.PDFTemplates
             cellLeft.Colspan = 4;
             cellLeft.Phrase = new Phrase(viewModel.Header.Remark, normal_font);
             headerTable3b.AddCell(cellLeft);
+
+            if (!string.IsNullOrWhiteSpace(viewModel.Header.ReasonForDelay))
+            {
+
+
+
+                cellLeft.Colspan = 5;
+                cellLeft.Phrase = new Phrase("\n\nAlasan Keterlambatan Realisasi: ", normal_font);
+                headerTable3b.AddCell(cellLeft);
+                cellLeft.Colspan = 5;
+                cellLeft.Phrase = new Phrase("", normal_font);
+                headerTable3b.AddCell(cellLeft);
+
+                var cellReason = new PdfPCell()
+                {
+                    Border = Rectangle.BOX,
+                };
+
+
+                cellReason.Colspan = 5;
+                cellReason.Phrase = new Phrase(viewModel.Header.ReasonForDelay, normal_font);
+                headerTable3b.AddCell(cellReason);
+
+
+            }
+
             emptyBorder.AddElement(headerTable3b);
             headerTable_C.AddCell(emptyBorder);
 

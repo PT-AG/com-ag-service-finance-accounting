@@ -66,6 +66,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
             DocumentType = viewModel.DocumentType;
             Position = VBRealizationPosition.Purchasing;
             Remark = viewModel.Remark;
+            ReasonForDelay = viewModel.ReasonForDelay;
         }
 
         public void UpdateVerified(VBRealizationPosition position, string reason, string username, string userAgent)
@@ -78,7 +79,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
             this.FlagForUpdate(username, userAgent);
         }
 
-        public VBRealizationDocumentModel(CurrencyDto currency, DateTimeOffset? date, UnitDto suppliantUnit, Tuple<string, int> documentNo, decimal amount, string remark)
+        public VBRealizationDocumentModel(CurrencyDto currency, DateTimeOffset? date, UnitDto suppliantUnit, Tuple<string, int> documentNo, decimal amount, string remark, string reasonForDelay)
         {
             CurrencyCode = currency.Code;
             CurrencyDescription = currency.Description;
@@ -99,9 +100,10 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
             Position = VBRealizationPosition.Purchasing;
             Amount = amount;
             Remark = remark;
+            ReasonForDelay = reasonForDelay;
         }
 
-        public VBRealizationDocumentModel(DateTimeOffset? date, VBRequestDocumentModel vbRequest, Tuple<string, int> documentNo, decimal amount, string remark)
+        public VBRealizationDocumentModel(DateTimeOffset? date, VBRequestDocumentModel vbRequest, Tuple<string, int> documentNo, decimal amount, string remark, string reasonForDelay)
         {
             Date = date.GetValueOrDefault();
             Type = VBType.WithPO;
@@ -132,6 +134,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
 
             Position = VBRealizationPosition.Purchasing;
             Remark = remark;
+            ReasonForDelay = reasonForDelay;
         }
 
         
@@ -202,6 +205,7 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
         [MaxLength(256)]
         public string ContractPONumber { get; private set; }
         public bool IsInklaring { get; private set; }
+        public string ReasonForDelay { get; private set; }
         public void SetCurrency(int newCurrencyId, string newCurrencyCode, string newCurrencySymbol, double newCurrencyRate, string newCurrencyDescription, string user, string userAgent)
         {
             if (newCurrencyId != CurrencyId)
@@ -365,6 +369,10 @@ namespace Com.Ambassador.Service.Finance.Accounting.Lib.Models.VBRealizationDocu
         public void SetRemark(string remark)
         {
             Remark = remark;
+        }
+        public void SetReasonForDelay(string reasonForDelay)
+        {
+            ReasonForDelay = reasonForDelay;
         }
     }
 }
